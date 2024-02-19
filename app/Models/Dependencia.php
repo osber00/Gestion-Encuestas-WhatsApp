@@ -13,6 +13,8 @@ class Dependencia extends Model
 
     protected $fillable = ['nombre', 'slug'];
 
+    protected $withCount = ['empleados'];
+
     public function empleados()
     {
         return $this->hasMany(Empleado::class);
