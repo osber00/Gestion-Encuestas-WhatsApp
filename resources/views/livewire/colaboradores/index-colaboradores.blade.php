@@ -13,6 +13,9 @@
                 <button wire:click="crearColaborador" class="btn btn-sm btn-primary"><i class="fa fa-plus-circle mx-1"></i> Nuevo</button>
             </h5>
         </div>
+        <div class="px-2">
+            <input type="text" wire:model="busqueda"  class="form-control w-25 mb-2 float-end" placeholder="Búsqueda"/>
+        </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover">
                 <thead>
@@ -50,6 +53,9 @@
                 @endforeach
                 </tbody>
             </table>
+            <div class="float-end my-4 mx-3 text-center">
+                {{$empleados->links()}}
+            </div>
         </div>
     </div>
     @livewire('colaboradores.editar-colaborador')

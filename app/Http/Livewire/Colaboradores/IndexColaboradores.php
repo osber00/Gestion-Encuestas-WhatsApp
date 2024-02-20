@@ -4,16 +4,20 @@ namespace App\Http\Livewire\Colaboradores;
 
 use App\Models\Empleado;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class IndexColaboradores extends Component
 {
-    public $empleados = [];
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
+    public $busqueda = '';
     public $feedback;
 
     public function mount()
     {
         $this->feedback = null;
-        $this->empleados = Empleado::all();
+        //$this->empleados = Empleado::all();
     }
 
     protected $listeners = [
@@ -23,7 +27,7 @@ class IndexColaboradores extends Component
     public function actualizar($data)
     {
         $this->feedback = $data;
-        $this->empleados = Empleado::all();
+        //$this->empleados = Empleado::all();
     }
 
     public function crearColaborador()
@@ -38,8 +42,19 @@ class IndexColaboradores extends Component
         $this->emitTo('colaboradores.editar-colaborador','editar-colaborador-modal', $empleado);
     }
 
+    public function updatedBusqueda()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        return view('livewire.colaboradores.index-colaboradores')->layout('layouts.admin-layout');
+        $empleados = Empleado::where(function($query) {
+            $query->where('nombres', 'like', '%'.$this->busqueda.'%')
+                ->orWhere('apellidos', 'like', '%'.$this->busqueda.'%')
+                ->orWhere('correo', 'like', '%'.$this->busqueda.'%')
+                ->orWhere('identificacion', 'like', '%'.$this->busqueda.'%');
+            })->paginate(10);
+        return view('livewire.colaboradores.index-colaboradores', compact('empleados'))->layout('layouts.admin-layout');
     }
 }
