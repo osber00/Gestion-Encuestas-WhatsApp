@@ -49,7 +49,7 @@ class IndexColaboradores extends Component
 
     public function render()
     {
-        $empleados = Empleado::where(function($query) {
+        $empleados = Empleado::with('dependencia')->where(function($query) {
             $query->where('nombres', 'like', '%'.$this->busqueda.'%')
                 ->orWhere('apellidos', 'like', '%'.$this->busqueda.'%')
                 ->orWhere('correo', 'like', '%'.$this->busqueda.'%')
