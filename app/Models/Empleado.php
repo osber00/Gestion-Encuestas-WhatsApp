@@ -15,7 +15,8 @@ class Empleado extends Model
         'correo',
         'identificacion',
         'servicio',
-        'dependencia_id'
+        'dependencia_id',
+        'activo'
     ];
 
     public function dependencia()

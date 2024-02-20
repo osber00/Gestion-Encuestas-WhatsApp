@@ -8,9 +8,9 @@
     <div class="card">
         <div>
             <h5 class="card-header">
-                Dependencias
+                <i class="fa fa-building"></i> Dependencias
                 <span class="ti ti-dots-vertical"></span>
-                <button wire:click="crearDependencia()" class="btn btn-sm btn-primary"><i class="fa fa-plus-circle mx-1"></i> Nueva</button>
+                <button wire:click="crearDependencia" class="btn btn-sm btn-primary"><i class="fa fa-plus-circle mx-1"></i> Nueva</button>
             </h5>
         </div>
         <div class="table-responsive text-nowrap">
@@ -28,7 +28,7 @@
                         <td>
                             <i class="ti ti-building-community ti-lg text-primary me-3"></i> <strong>{{$dependencia->nombre}}</strong>
                         </td>
-                        <td class="text-center"><span class="badge bg-label-danger">{{$dependencia->empleados_count}}</span></td>
+                        <td class="text-center"><span class="badge bg-label-danger">{{$dependencia->empleados_activos_count}}</span></td>
                         <td>
                             <button wire:click="editarDependencia({{$dependencia->id}})" class="btn btn-sm btn-warning"><i class="fa fa-cog mx-1"></i> Editar</button>
                         </td>

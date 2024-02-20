@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dependencias\IndexDependencias;
+use App\Http\Livewire\Colaboradores\IndexColaboradores;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use App\Http\Livewire\Dependencias\IndexDependencias;
 */
 
 Route::get('/dependencias', IndexDependencias::class)->name('dependencias');
+Route::get('/colaboradores', IndexColaboradores::class)->name('colaboradores');
 
 Route::get('/plantilla', function (){
     return view('plantilla');
@@ -22,7 +24,7 @@ Route::get('/plantilla', function (){
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('inicio');
 
 Route::middleware([
     'auth:sanctum',
