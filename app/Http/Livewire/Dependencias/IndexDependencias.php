@@ -9,14 +9,33 @@ class IndexDependencias extends Component
 {
 
     public $dependencias = [];
+    public $feedback;
 
     public function mount()
     {
+        $this->feedback = null;
         $this->dependencias = Dependencia::all();
     }
 
-    public function editarDependencia($dependencia)
+    protected $listeners = [
+        'actualizar'
+    ];
+
+    public function actualizar($data)
     {
+        $this->feedback = $data;
+        $this->dependencias = Dependencia::all();
+    }
+
+    public function crearDependencia()
+    {
+        $this->reset('feedback');
+        $this->emitTo('dependencias.crear-dependencia', 'crear-dependencia-modal');
+    }
+
+    public function editarDependencia(Dependencia $dependencia)
+    {
+        $this->reset('feedback');
         $this->emitTo('dependencias.editar-dependencia','editar-dependencia-modal', $dependencia);
     }
 

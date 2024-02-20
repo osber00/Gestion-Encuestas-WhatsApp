@@ -1,8 +1,18 @@
 <div>
     <x-titulo-pagina>Dependencias</x-titulo-pagina>
 
+    @if($feedback != null)
+        <x-informacion tipo="{{$feedback['tipo']}}" icono="{{$feedback['icono']}}">{{$feedback['mje']}}</x-informacion>
+    @endif
+
     <div class="card">
-        <h5 class="card-header">Dependencias</h5>
+        <div>
+            <h5 class="card-header">
+                Dependencias
+                <span class="ti ti-dots-vertical"></span>
+                <button wire:click="crearDependencia()" class="btn btn-sm btn-primary"><i class="fa fa-plus-circle mx-1"></i> Nueva</button>
+            </h5>
+        </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover">
                 <thead>
@@ -29,4 +39,5 @@
         </div>
     </div>
     @livewire('dependencias.editar-dependencia')
+    @livewire('dependencias.crear-dependencia')
 </div>
