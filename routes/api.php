@@ -17,7 +17,7 @@ use App\Http\Controllers\Api\WhatsAppConsultasController;
 
 Route::group(['prefix' => 'v1'], function (){
     Route::get('/consultar-telefono/{telefono}', [WhatsAppConsultasController::class, 'consultartelefono']);
-    Route::get('/empleado-servicio/{servicio}', [WhatsAppConsultasController::class, 'empleadoservicio']);
+    Route::get('/empleado-servicio/{servicio}/{telefono}', [WhatsAppConsultasController::class, 'empleadoservicio']);
     Route::post('/guardarencuesta', [WhatsAppConsultasController::class, 'guardarencuesta']);
 });
 

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\GenerarQRController;
 use App\Http\Livewire\Dependencias\IndexDependencias;
 use App\Http\Livewire\Colaboradores\IndexColaboradores;
 
@@ -17,14 +20,18 @@ use App\Http\Livewire\Colaboradores\IndexColaboradores;
 
 Route::get('/dependencias', IndexDependencias::class)->name('dependencias');
 Route::get('/colaboradores', IndexColaboradores::class)->name('colaboradores');
+Route::get('/generar-qr/{empleado}', [GenerarQRController::class, 'generarQR'])->name('generar-qr');
+Route::get('/reporte-dependencia/{dependencia}',[ReportesController::class, 'reportedependencia'])->name('reporte-dependencia');
+Route::get('/reporte-dependencias',[ReportesController::class, 'reportexdependencias'])->name('reporte-dependencias');
+Route::get('/',[InicioController::class, 'inicio'])->name('inicio');
 
 Route::get('/plantilla', function (){
     return view('plantilla');
 });
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-})->name('inicio');
+})->name('inicio');*/
 
 Route::middleware([
     'auth:sanctum',

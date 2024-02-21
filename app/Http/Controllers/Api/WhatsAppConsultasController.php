@@ -25,9 +25,22 @@ class WhatsAppConsultasController extends Controller
 
     }
 
-    public function empleadoservicio($servicio)
+    public function empleadoservicio($servicio, $telefono)
     {
-        $empleado = Empleado::with('dependencia')->where('servicio',$servicio)->first();
+        $usuario = Usuario::where('telefono', $telefono)->first();
+        $empleado = Empleado::with('dependencia')->where('activo',true)->where('servicio',$servicio)->first();
+        $hoy = now()->toDateString();
+        if ($usuario != null && $empleado != null){
+            $encuestaHoy = Encuesta::where('usuario_id', $usuario->id)
+                ->where('empleado_id',$empleado->id)
+                ->whereDate('created_at', $hoy)
+                ->exists();
+            if ($encuestaHoy){
+                return response()->json(['encuesta_hoy'=>true]);
+            }
+        }
+
+
         if ($empleado){
             return response()->json(['usuario' => $empleado]);
         }else{

@@ -17,6 +17,12 @@
             'icono'   => 'ti-users',
             'route'  => route('colaboradores'),
             'active' => request()->routeIs('colaboradores'),
+        ],
+        [
+            'nombre' => 'Rep. Dependencias',
+            'icono'   => 'ti-layout-grid',
+            'route'  => route('reporte-dependencias'),
+            'active' => request()->routeIs('reporte-dependencias'),
         ]
     ]
 @endphp

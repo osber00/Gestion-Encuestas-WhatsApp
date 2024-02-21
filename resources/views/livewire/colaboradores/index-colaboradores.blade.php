@@ -23,10 +23,11 @@
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Correo</th>
-                    <th>Identificación</th>
+                    {{--<th>Identificación</th>--}}
                     <th>Servicio</th>
                     <th>Dependencia</th>
                     <th>Activo</th>
+                    <th>QR</th>
                     <th>Modificar</th>
                 </tr>
                 </thead>
@@ -36,7 +37,7 @@
                         <td>{{$empleado->nombres}}</td>
                         <td>{{$empleado->apellidos}}</td>
                         <td>{{$empleado->correo}}</td>
-                        <td>{{$empleado->identificacion}}</td>
+                        {{--<td>{{$empleado->identificacion}}</td>--}}
                         <td>{{$empleado->servicio}}</td>
                         <td>{{$empleado->dependencia->nombre}}</td>
                         <td>
@@ -44,6 +45,13 @@
                                 <i class='fa fa-check-circle text-primary'></i>
                             @else
                                 <i class='fa fa-times-circle text-danger'></i>
+                            @endif
+                        </td>
+                        <td>
+                            @if($empleado->activo)
+                                <a href="{{route('generar-qr',$empleado->id)}}" target="_blank" class="text-primary"><i class="fa fa-qrcode"></i> QR</a>
+                            @else
+                                <span class="text-danger"><i class="fa fa-exclamation"></i> NO</span>
                             @endif
                         </td>
                         <td>
