@@ -100,10 +100,10 @@ class ReportesController extends Controller
             ->join('encuestas', 'empleados.id', '=', 'encuestas.empleado_id')
             ->where('empleados.dependencia_id', $dependencia_id)
             ->selectRaw('
-                    ROUND((SUM(CASE WHEN p1 = 1 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as rta_1,
-                    ROUND((SUM(CASE WHEN p1 = 2 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as rta_2,
-                    ROUND((SUM(CASE WHEN p1 = 3 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as rta_3,
-                    ROUND((SUM(CASE WHEN p1 = 4 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as rta_4,
-                    ROUND((SUM(CASE WHEN p1 = 5 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as rta_5')->first();
+                    ROUND((SUM(CASE WHEN p5 = 1 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as rta_1,
+                    ROUND((SUM(CASE WHEN p5 = 2 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as rta_2,
+                    ROUND((SUM(CASE WHEN p5 = 3 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as rta_3,
+                    ROUND((SUM(CASE WHEN p5 = 4 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as rta_4,
+                    ROUND((SUM(CASE WHEN p5 = 5 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as rta_5')->first();
     }
 }
