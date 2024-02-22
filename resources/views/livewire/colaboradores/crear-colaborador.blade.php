@@ -61,8 +61,9 @@
                         @enderror
                     </div>
                     <div class="mb-1">
-                        <label>Activo:</label>
+                        <label>Activo</label>
                         <select wire:model.defer='activo' class="form-control">
+                            <option value="null">Seleccione el estado</option>
                             <option value="1">Sí</option>
                             <option value="0">No</option>
                         </select>

@@ -50,7 +50,7 @@ class CrearColaborador extends Component
             'identificacion' => 'required|string|max:255|unique:empleados,identificacion',
             'servicio' => 'required|string|max:255',
             'dependencia_id' => 'required|exists:dependencias,id',
-            'activo' => 'required|boolean',
+            'activo' => 'required'
         ];
     }
 

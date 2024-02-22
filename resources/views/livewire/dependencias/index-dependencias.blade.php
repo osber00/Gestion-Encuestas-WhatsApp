@@ -20,6 +20,7 @@
                     <th>Nombre</th>
                     <th class="text-center">Colaboradores</th>
                     <th>Modificar</th>
+                    <th>Reportes</th>
                 </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -31,6 +32,9 @@
                         <td class="text-center"><span class="badge bg-label-danger">{{$dependencia->empleados_activos_count}}</span></td>
                         <td>
                             <button wire:click="editarDependencia({{$dependencia->id}})" class="btn btn-sm btn-warning"><i class="fa fa-cog mx-1"></i> Editar</button>
+                        </td>
+                        <td>
+                            <a href="{{route('reporte-dependencia',$dependencia->id)}}" class="btn btn-sm btn-outline-primary"><i class="fa fa-chart-pie mx-1"></i> Reporte</a>
                         </td>
                     </tr>
                 @endforeach

@@ -22,8 +22,8 @@ class DataInicialSeeder extends Seeder
         $this->admin();
         $this->dependencias();
         $this->empleados();
-        $this->usuarios();
-        $this->encuestas();
+        //$this->usuarios();
+        //$this->encuestas();
     }
 
     private function admin()

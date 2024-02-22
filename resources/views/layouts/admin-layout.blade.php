@@ -5,7 +5,7 @@
     class="light-style layout-navbar-fixed layout-menu-fixed"
     dir="ltr"
     data-theme="theme-semi-dark"
-    data-assets-path="assets/"
+    data-assets-path="/assets/"
     data-template="vertical-menu-template">
 <head>
     <meta charset="utf-8" />
@@ -41,6 +41,9 @@
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/node-waves/node-waves.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/typeahead-js/typeahead.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/libs/select2/select2.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/libs/tagify/tagify.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/bootstrap-maxlength/bootstrap-maxlength.css')}}" />
 
     <!-- Page CSS -->
@@ -177,6 +180,9 @@
 <!-- endbuild -->
 
 <!-- Vendors JS -->
+<script src="{{asset('assets/vendor/libs/select2/select2.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/tagify/tagify.js')}}"></script>
+<script src="{{asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js')}}"></script>
 <script src="{{asset('assets/vendor/libs/bootstrap-maxlength/bootstrap-maxlength.js')}}"></script>
 
 <!-- Main JS -->
@@ -184,6 +190,8 @@
 
 <!-- Page JS -->
 {{--<script src="{{asset('assets/js/app-chat.js')}}"></script>--}}
+<script src="{{asset('assets/js/forms-selects.js')}}"></script>
+<script src="{{asset('assets/js/forms-tagify.js')}}"></script>
 @livewireScripts
 @stack('scripts')
 </body>

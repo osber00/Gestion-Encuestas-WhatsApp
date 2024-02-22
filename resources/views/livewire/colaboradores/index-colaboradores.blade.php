@@ -22,13 +22,14 @@
                 <tr>
                     <th>Nombres</th>
                     <th>Apellidos</th>
-                    <th>Correo</th>
+                    {{--<th>Correo</th>--}}
                     {{--<th>Identificación</th>--}}
                     <th>Servicio</th>
                     <th>Dependencia</th>
                     <th>Activo</th>
                     <th>QR</th>
                     <th>Modificar</th>
+                    <th>Reporte</th>
                 </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -36,7 +37,7 @@
                     <tr>
                         <td>{{$empleado->nombres}}</td>
                         <td>{{$empleado->apellidos}}</td>
-                        <td>{{$empleado->correo}}</td>
+                        {{--<td>{{$empleado->correo}}</td>--}}
                         {{--<td>{{$empleado->identificacion}}</td>--}}
                         <td>{{$empleado->servicio}}</td>
                         <td>{{$empleado->dependencia->nombre}}</td>
@@ -56,6 +57,9 @@
                         </td>
                         <td>
                             <button wire:click="editarColaborador({{$empleado->id}})" class="btn btn-sm btn-warning"><i class="fa fa-cog mx-1"></i> Editar</button>
+                        </td>
+                        <td>
+                            <a href="{{route('reporte-colaborador',$empleado->id)}}" class="btn btn-sm btn-outline-primary"><i class="fa fa-chart-pie mx-1"></i> Reporte</a>
                         </td>
                     </tr>
                 @endforeach

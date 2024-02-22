@@ -22,7 +22,7 @@ Route::get('/dependencias', IndexDependencias::class)->name('dependencias');
 Route::get('/colaboradores', IndexColaboradores::class)->name('colaboradores');
 Route::get('/generar-qr/{empleado}', [GenerarQRController::class, 'generarQR'])->name('generar-qr');
 Route::get('/reporte-dependencia/{dependencia}',[ReportesController::class, 'reportedependencia'])->name('reporte-dependencia');
-Route::get('/reporte-dependencias',[ReportesController::class, 'reportexdependencias'])->name('reporte-dependencias');
+Route::get('/reporte-colaborador/{empleado}',[ReportesController::class, 'reportecolaborador'])->name('reporte-colaborador');
 Route::get('/',[InicioController::class, 'inicio'])->name('inicio');
 
 Route::get('/plantilla', function (){

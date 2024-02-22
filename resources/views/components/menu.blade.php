@@ -10,20 +10,20 @@
             'nombre' => 'Dependencias',
             'icono'   => 'ti-building',
             'route'  => route('dependencias'),
-            'active' => request()->routeIs('dependencias'),
+            'active' => request()->routeIs('dependencias') or request()->routeIs('reporte-dependencia'),
         ],
         [
             'nombre' => 'Colaboradores',
             'icono'   => 'ti-users',
             'route'  => route('colaboradores'),
-            'active' => request()->routeIs('colaboradores'),
+            'active' => request()->routeIs('colaboradores') or request()->routeIs('reporte-colaborador'),
         ],
-        [
+        /*[
             'nombre' => 'Rep. Dependencias',
             'icono'   => 'ti-layout-grid',
             'route'  => route('reporte-dependencias'),
             'active' => request()->routeIs('reporte-dependencias'),
-        ]
+        ]*/
     ]
 @endphp
 
@@ -36,7 +36,7 @@
         <li class="menu-item @if($opcion['active']) active @endif">
             <a href="{{$opcion['route']}}" class="menu-link">
                 <i class="menu-icon tf-icons ti {{$opcion['icono']}}"></i>
-                <div data-i18n="Dependencias">{{$opcion['nombre']}}</div>
+                <div data-i18n="{{$opcion['nombre']}}">{{$opcion['nombre']}}</div>
             </a>
         </li>
     @endforeach
