@@ -49,7 +49,7 @@ class DataInicialSeeder extends Seeder
 
     private function empleados()
     {
-        for ($i=1; $i<=16; $i++){
+        for ($i=1; $i<=10; $i++){
             Empleado::create([
                 'nombres'=> 'Colaborador '.$i,
                 'apellidos'=> 'Apellido '.$i,
