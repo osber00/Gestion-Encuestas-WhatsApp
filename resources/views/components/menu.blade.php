@@ -40,4 +40,13 @@
             </a>
         </li>
     @endforeach
+    <li class="menu-item">
+        <form method="POST" action="{{route('logout')}}">
+            @csrf
+            <button type="submit" class="menu-link bg-transparent border-0">
+                <i class="menu-icon tf-icons ti ti-anchor-off"></i>
+                <div data-i18n="Salir">Salir</div>
+            </button>
+        </form>
+    </li>
 </ul>
