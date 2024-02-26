@@ -19,15 +19,18 @@ class GenerarQRController extends Controller
             ->size(400)
             //->eye('square')
             //->style('square')
-            //->color(0,0,0)
+            //->color(0,105,55)
             //->backgroundColor(255,255,255)
             ->generate($url, $qr_imagen);
 
         if (file_exists($qr_imagen)){
-            $nombreImagen = basename($qr_imagen);
-            $urlDescargaImagenQr = asset('qrcodes/'.$nombreImagen);
+            $codigoQr = basename($qr_imagen);
+            $colaborador = $empleado->nombres.' '.$empleado->apellidos;
+            //$urlDescargaImagenQr = asset('qrcodes/'.$codigoQr);
             //return response()->download($urlDescargaImagenQr);
-            return redirect()->away($urlDescargaImagenQr);
+            //dd($codigoQr);
+            return  view('preview-codeqr', compact('codigoQr', 'colaborador'));
+            //return redirect()->away($urlDescargaImagenQr);
         }
 
         return false;
