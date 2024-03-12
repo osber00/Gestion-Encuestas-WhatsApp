@@ -59,7 +59,7 @@ class WhatsAppConsultasController extends Controller
             'p3' => $request->pregunta3,
             'p4' => $request->pregunta4,
             'p5' => $request->pregunta5,
-            'observaciones' => null,
+            'observaciones' => $request->pregunta6
         ]);
         return response()->json(['encuesta' => $encuesta->id]);
     }
