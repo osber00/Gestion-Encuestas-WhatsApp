@@ -29,7 +29,8 @@ class ReportesController extends Controller
         $numero_encuestas = Encuesta::where('empleado_id',$empleado->id)->count();
 
         //dd($reporte, $pregunta1, $pregunta2, $pregunta3, $pregunta4, $pregunta5);
-        return view('reportes.reporte-colaborador', compact('empleado','numero_encuestas','pregunta1','pregunta2','pregunta3','pregunta4','pregunta5'));
+        $mensajes = Encuesta::where('empleado_id',$empleado->id)->where('observaciones','<>', null)->orderBy('id','desc')->get();
+        return view('reportes.reporte-colaborador', compact('empleado','numero_encuestas','pregunta1','pregunta2','pregunta3','pregunta4','pregunta5', 'mensajes'));
     }
 
     public function reportedependencia(Dependencia $dependencia)

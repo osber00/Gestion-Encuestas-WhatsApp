@@ -9,7 +9,6 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h5 class="card-title m-0 me-2 pt-1 mb-2">{{$empleado->nombres}} {{$empleado->apellidos}}</h5>
-
                 </div>
                 <div class="card-body pb-0">
                     <ul class="timeline ms-1 mb-0">
@@ -139,6 +138,25 @@
                 </div>
             </div>
         </div>
+    </div>
+    <br>
+    <div class="row">
+        @foreach($mensajes as $mensaje)
+            <div class="col-lg-12 col-md-12">
+                <div class="col-md">
+                    <div class="card mb-4">
+                        <div class="card-header header-elements">
+                            <small class="me-2 fw-bold">
+                                <i class="ti ti-calendar-event text-primary"></i> {{$mensaje->fecha}}
+                            </small>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><i class="ti ti-message"></i> {{$mensaje->observaciones}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 
 </x-admin-layout>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\AuxiliarController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,5 +29,10 @@ class Encuesta extends Model
     public function usuario()
     {
         return $this->belongsTo(Usuario::class);
+    }
+
+    public function getFechaAttribute()
+    {
+        return AuxiliarController::formatoFecha($this->created_at);
     }
 }
