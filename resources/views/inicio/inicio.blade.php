@@ -1,7 +1,12 @@
 <x-admin-layout>
-    <x-titulo-pagina>Reporte general</x-titulo-pagina>
+    <x-titulo-pagina>
+        Reporte general
+        <a href="{{route('descargar-reporte-general')}}" class="btn btn-danger btn-sm"><i class="fa fa-cloud-download mx-2"></i> Descargar reporte general</a>
+    </x-titulo-pagina>
 
-    <div class="alert alert-primary bg-primary text-white" role="alert">El informe considera datos de {{$numero_encuestas}} encuestas llevadas a cabo.</div>
+    <div class="alert alert-primary bg-primary text-white" role="alert">
+        El informe considera datos de {{$numero_encuestas}} encuestas llevadas a cabo.
+    </div>
 
     <div class="row">
         {{--Pregunta 1--}}

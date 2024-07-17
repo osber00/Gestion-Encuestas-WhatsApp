@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ReportePromedioDependenciaExport;
 use App\Models\Dependencia;
 use App\Models\Empleado;
 use App\Models\Encuesta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportesController extends Controller
 {
@@ -45,6 +48,25 @@ class ReportesController extends Controller
         $respuestas_p5 = $this->reportePregunta5($dependencia->id);
         //dd($respuestas_p1, $respuestas_p2, $respuestas_p3, $respuestas_p4, $respuestas_p5);
         return view('reportes.reporte-dependencia', compact('dependencia','numero_encuestas','respuestas_p1','respuestas_p2','respuestas_p3','respuestas_p4','respuestas_p5'));
+    }
+
+    public function reportepromediodependencia(Dependencia $dependencia)
+    {
+        $numero_encuestas =  Encuesta::join('empleados', 'encuestas.empleado_id', '=', 'empleados.id')
+            ->where('empleados.dependencia_id', $dependencia->id)
+            ->count();
+        $promedio = DB::table('encuestas')
+            ->join('empleados', 'encuestas.empleado_id', '=', 'empleados.id')
+            ->where('empleados.dependencia_id', $dependencia->id)
+            ->selectRaw('
+                      AVG(p1) as promedio_p1,
+                      AVG(p2) as promedio_p2,
+                      AVG(p3) as promedio_p3,
+                      AVG(p4) as promedio_p4,
+                      AVG(p5) as promedio_p5
+                  ')
+            ->first();
+        return Excel::download(new ReportePromedioDependenciaExport($dependencia->nombre, $promedio, $numero_encuestas),'Promedio'.Str::slug($dependencia->nombre).'.xlsx');
     }
 
     private function reportePregunta1($dependencia_id)

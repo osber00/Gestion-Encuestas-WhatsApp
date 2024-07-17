@@ -25,6 +25,10 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/reporte-dependencia/{dependencia}',[ReportesController::class, 'reportedependencia'])->name('reporte-dependencia');
     Route::get('/reporte-colaborador/{empleado}',[ReportesController::class, 'reportecolaborador'])->name('reporte-colaborador');
     Route::get('/',[InicioController::class, 'inicio'])->name('inicio');
+
+    //Reportes excel
+    Route::get('/descargar-reporte-general', [InicioController::class, 'descargar_reporte_general'])->name('descargar-reporte-general');
+    Route::get('/descargar-reporte-promedio-dependencia/{dependencia}',[ReportesController::class, 'reportepromediodependencia'])->name('descargar-reporte-promedio-dependencia');
 });
 
 Route::get('/plantilla', function (){

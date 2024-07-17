@@ -35,6 +35,7 @@
                         </td>
                         <td>
                             <a href="{{route('reporte-dependencia',$dependencia->id)}}" class="btn btn-sm btn-outline-primary"><i class="fa fa-chart-pie mx-1"></i> Reporte</a>
+                            <a href="{{route('descargar-reporte-promedio-dependencia', $dependencia->id)}}"><i class="fa fa-cloud-download mx-2 text-danger"></i></a>
                         </td>
                     </tr>
                 @endforeach
